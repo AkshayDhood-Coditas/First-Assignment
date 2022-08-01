@@ -8,7 +8,11 @@ const ProjectSchema = new Schema({
     projectName: { type: String, required: true },
     projectCost: { type: Number, required: true },
     projectLocation: { type: String, required: true },
-    projectGroups: { type: Array, default: [] }
+    projectGroups: [{
+        type: Schema.Types.ObjectId,
+        ref: "groups",
+        default: []
+    }]
 }, { timestamps: true });
 
 // Exports
