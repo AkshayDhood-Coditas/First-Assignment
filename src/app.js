@@ -5,7 +5,6 @@ const morgan = require("morgan");
 const express = require("express");
 const swaggerUi = require('swagger-ui-express');
 const MainRouter = require("./routes/main.routes");
-const Middleware = require("./middleware/middleware");
 const swaggerDocument = require("./utils/swagger.info");
 const DBConnection = require("./database/mongodb.connection");
 require("dotenv").config();
@@ -35,7 +34,7 @@ class App {
         this.app.use(morgan("dev"));
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
-        this.app.use(Middleware);
+
         this.app.use('/api/explorer', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         this.app.use(new MainRouter().getInstance());
     }
