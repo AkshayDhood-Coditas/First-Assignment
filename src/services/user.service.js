@@ -33,10 +33,6 @@ class UserService {
         throw Error("User Not Found!");
     }
 
-    deleteUserService() {
-        return UserModel.deleteOne({ _id: this.data.id });
-    }
-
     async inActiveUserService() {
         let [result] = await UserModel.find({ _id: this.data.id });
         if (!result) throw Error("User Not Found!");

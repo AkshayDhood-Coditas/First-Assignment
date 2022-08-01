@@ -15,7 +15,6 @@ class UserRouter {
         this.router.post("/", UserController.createUser);
         this.router.put("/", UserController.updateUser);
         this.router.get("/", UserController.getUser);
-        this.router.delete("/", UserController.deleteUser);
         this.router.put("/inactive", UserController.inActiveUser);
     }
 

@@ -34,7 +34,7 @@ class UserValidation {
         return schema.validate(params);
     }
 
-    static deleteUser(params) {
+    static inActiveUser(params) {
         const schema = Joi.object().keys({
             id: Joi.string().length(24).required()
         });

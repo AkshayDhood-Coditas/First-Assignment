@@ -67,29 +67,6 @@ class UserController {
     }
 
     /**
-     * @function deleteUser
-     * @description Deletes existing User.
-     * @param {*} req 
-     * @param {*} res 
-     * @returns 
-     */
-    static async deleteUser(req, res) {
-        try {
-            const { value, error } = UserValidation.deleteUser(req.body);
-            if (error) return res.status(400).json({ message: "Validation Error!", error: error.details[0].message, data: null });
-
-            const data = await new UserService(value).deleteUserService();
-            const message = data.deletedCount ? "Success." : "User Not Found!";
-            const code = data.deletedCount ? 200 : 400;
-
-            return res.status(code).json({ message, error: null, data });
-        } catch (error) {
-            if (error instanceof Error) return res.status(400).json({ message: error.message, error, data: null });
-            return res.status(500).json({ message: "Server Error!", error: error.message, data: null });
-        }
-    }
-
-    /**
      * @function inActiveUser
      * @description In-Active existing user.
      * @param {*} req 
@@ -98,7 +75,7 @@ class UserController {
      */
     static async inActiveUser(req, res) {
         try {
-            const { value, error } = UserValidation.deleteUser(req.body);
+            const { value, error } = UserValidation.inActiveUser(req.body);
             if (error) return res.status(400).json({ message: "Validation Error!", error: error.details[0].message, data: null });
 
             const data = await new UserService(value).inActiveUserService();
