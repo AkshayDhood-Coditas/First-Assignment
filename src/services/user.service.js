@@ -3,6 +3,7 @@
 // Importing dependencies
 const UserModel = require("../database/user.schema");
 
+
 class UserService {
     constructor(data) {
         this.data = data;

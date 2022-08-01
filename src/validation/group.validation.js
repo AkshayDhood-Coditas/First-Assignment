@@ -1,10 +1,10 @@
-// User Validation
+// Group Validation
 
 // Importing dependencies
 const Joi = require("joi");
 
 
-class UserValidation {
+class GroupValidation {
     static createGroup(params) {
         const schema = Joi.object().keys({
             groupName: Joi.string().required(),
@@ -44,4 +44,4 @@ class UserValidation {
 }
 
 // Exports
-module.exports = UserValidation;
+module.exports = GroupValidation;

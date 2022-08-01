@@ -4,6 +4,7 @@
 const GroupService = require("../services/group.service");
 const GroupValidation = require("../validation/group.validation");
 
+
 class GroupController {
 
     /**
@@ -19,7 +20,7 @@ class GroupController {
             if (error) return res.status(400).json({ message: "Validation Error!", error: error.details[0].message, data: null });
 
             const data = new GroupService(value).createGroupService();
-            return res.status(200).json({ message: "Success.", error: null, data });
+            return res.status(200).json({ message: "Group Created.", error: null, data });
         } catch (error) {
             return res.status(500).json({ message: "Server Error!", error: error.message, data: null });
         }
@@ -31,7 +32,7 @@ class GroupController {
      * @description Updates existing Groups.
      * @param {*} req 
      * @param {*} res 
-     * @returns 
+     * @returns response
      */
     static async updateGroup(req, res) {
         try {
@@ -39,7 +40,7 @@ class GroupController {
             if (error) return res.status(400).json({ message: "Validation Error!", error: error.details[0].message, data: null });
 
             const data = await new GroupService(value).updateGroupService();
-            return res.status(200).json({ message: "Success.", error: null, data });
+            return res.status(200).json({ message: "Group Updated.", error: null, data });
         } catch (error) {
             if (error instanceof Error) return res.status(400).json({ message: error.message, error, data: null });
             return res.status(500).json({ message: "Server Error!", error: error.message, data: null });
@@ -51,7 +52,7 @@ class GroupController {
      * @description Gets Group data by ID.
      * @param {*} req 
      * @param {*} res 
-     * @returns 
+     * @returns response
      */
     static async getGroups(req, res) {
         try {
@@ -71,7 +72,7 @@ class GroupController {
      * @description Delete Group.
      * @param {*} req 
      * @param {*} res 
-     * @returns 
+     * @returns response
      */
     static async deleteGroup(req, res) {
         try {
@@ -79,7 +80,7 @@ class GroupController {
             if (error) return res.status(400).json({ message: "Validation Error!", error: error.details[0].message, data: null });
 
             await new GroupService(value).deleteGroupService();
-            return res.status(200).json({ message: "Success.", error: null, data: null });
+            return res.status(200).json({ message: "Group Deleted.", error: null, data: null });
         } catch (error) {
             if (error instanceof Error) return res.status(400).json({ message: error.message, error, data: null });
             return res.status(500).json({ message: "Server Error!", error: error.message, data: null });

@@ -19,9 +19,9 @@ class ProjectValidation {
     static updateProject(params) {
         const schema = Joi.object().keys({
             id: Joi.string().length(24).required(),
-            projectName: Joi.string().required(),
-            projectCost: Joi.number().required(),
-            projectLocation: Joi.string().required(),
+            projectName: Joi.string().default(null),
+            projectCost: Joi.number().default(null),
+            projectLocation: Joi.string().default(null),
             projectGroups: Joi.array().items(Joi.string().length(24)).default(null)
         });
 
