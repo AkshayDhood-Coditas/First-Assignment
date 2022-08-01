@@ -35,6 +35,15 @@ class GroupService {
                     from: "users",
                     localField: "groupMembers",
                     foreignField: "_id",
+                    pipeline: [{
+                        $match: {
+                            $expr: {
+                                $eq: [
+                                    '$isActive', true
+                                ]
+                            }
+                        }
+                    }],
                     as: "user"
                 }
             },
